@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Jazz visualisation</title>
+    <meta name="description" content="A walk through Belgian Jazz history">
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1,width=device-width">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <!-- Style-->
+    <style>
+        html,
+        body {
+            height: 100%;
+            padding: 0px;
+            margin: 0px;
+        }
+    </style>
+    <link rel="stylesheet" href="\timeline3\timeline3\css\timeline.css">
+
+    <script type="text/javascript" src="\timeline3\timeline3\js\timeline-min.js"></script>
+
+</head>
+
+<body>
+    <section id="demo">
+        <div id="timeline-embed" style="height: 100%;">
+            <div id="timeline"></div>
+        </div>
+    </section>
+    <script >
+    document.addEventListener('DOMContentLoaded', function() {
+    var embed = document.getElementById('timeline-embed');
+    embed.style.height = getComputedStyle(document.body).height;
+
+    window.timeline = new TL.Timeline(
+        'timeline-embed',
+        'eersteprobeersel_tijdslijn.json',
+        {
+            hash_bookmark: true
+        }
+    );
+
+    window.addEventListener('resize', function() {
+        var embed = document.getElementById('timeline-embed');
+        embed.style.height = getComputedStyle(document.body).height;
+        timeline.updateDisplay();
+        });
+    });
+    </script>
+
+</body>
+
+</html>
