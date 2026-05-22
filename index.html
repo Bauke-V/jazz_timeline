@@ -43,6 +43,18 @@
         }
     );
 
+    document.addEventListener('click', function(e) {
+        const link = e.target.closest('a');
+
+        if (link && link.getAttribute('href') && link.getAttribute('href').startsWith('#event-')) {
+            e.preventDefault();
+
+            const id = link.getAttribute('href').replace('#event-', '');
+
+            timeline.goToId(id);
+        }
+    });
+
     window.addEventListener('resize', function() {
         var embed = document.getElementById('timeline-embed');
         embed.style.height = getComputedStyle(document.body).height;
